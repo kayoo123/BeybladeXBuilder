@@ -151,6 +151,7 @@ body {
   border: none;
   cursor: pointer;
   font-size: 16px;
+  border-radius: 5px;
   display: none; /* Masquer le bouton par défaut */
 }
 
