@@ -1,112 +1,111 @@
 .card-deck {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .card-wrapper {
-    position: relative;
-    width: 300px; /* Largeur du paquet */
-    height: 400px; /* Hauteur du paquet */
-    perspective: 1000px;
-    cursor: pointer;
-  }
-  
-  .card-front,
-  .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    transition: transform 0.6s;
-  }
-  
-  .card-front {
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .card-back {
-    transform: rotateY(180deg);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0; /* Supprimer le padding pour éviter d'augmenter la taille */
-    margin: 0; /* Supprimer la marge pour éviter d'augmenter la taille */
-    width: 100%; /* Assurez-vous que la carte arrière prend toute la largeur */
-    height: 100%; /* Assurez-vous que la carte arrière prend toute la hauteur */
-  }
-  
-  .card {
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.4s, transform 0.4s;
-    position: absolute;
-    width: 100%; /* Largeur de la carte */
-    height: 100%; /* Hauteur de la carte */
-    display: none;
-    padding: 0; /* Supprimer le padding pour éviter d'augmenter la taille */
-    margin: 0; /* Supprimer la marge pour éviter d'augmenter la taille */
-  }
-  
-  .card.active {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
-    justify-content: center; /* Centrer le contenu de la carte */
-    align-items: center; /* Centrer le contenu de la carte */
-  }
-  
-  .card-wrapper.open .card-front {
-    transform: rotateY(180deg);
-  }
-  
-  .card-wrapper.open .card-back {
-    transform: rotateY(0deg);
-  }
-  
-  .miniatures {
-    display: flex;
-    flex-direction: column; /* Aligner les miniatures et le bouton verticalement */
-    align-items: center; /* Centrer les éléments */
-    margin-top: 20px;
-  }
-  
-  .miniature-container {
-    display: flex; /* Afficher les miniatures en ligne */
-    justify-content: center; /* Centrer les miniatures */
-    margin-bottom: 10px; /* Espacement entre les miniatures et le bouton */
-  }
-  
-  .miniature-card {
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 60px; /* Largeur des miniatures */
-    height: 80px; /* Hauteur des miniatures */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 5px; /* Espacement entre les miniatures */
-  }
-  
-  .return-button {
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    display: none; /* Masquer le bouton par défaut */
-  }
-  
-  .return-button:hover {
-    background-color: #555; /* Couleur au survol */
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card-wrapper {
+  position: relative;
+  width: 300px; /* Largeur du paquet */
+  height: 400px; /* Hauteur du paquet */
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+}
+
+.card-front {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0; /* Supprimer le padding pour éviter d'augmenter la taille */
+  margin: 0; /* Supprimer la marge pour éviter d'augmenter la taille */
+  width: 100%; /* Assurez-vous que la carte arrière prend toute la largeur */
+  height: 100%; /* Assurez-vous que la carte arrière prend toute la hauteur */
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.4s, transform 0.4s;
+  position: absolute;
+  width: 100%; /* Largeur de la carte */
+  height: 100%; /* Hauteur de la carte */
+  display: none;
+  padding: 0; /* Supprimer le padding pour éviter d'augmenter la taille */
+  margin: 0; /* Supprimer la marge pour éviter d'augmenter la taille */
+}
+
+.card.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+  justify-content: center; /* Centrer le contenu de la carte */
+  align-items: center; /* Centrer le contenu de la carte */
+}
+
+.card-wrapper.open .card-front {
+  transform: rotateY(180deg);
+}
+
+.card-wrapper.open .card-back {
+  transform: rotateY(0deg);
+}
+
+.miniatures {
+  display: flex;
+  flex-direction: column; /* Aligner les miniatures et le bouton verticalement */
+  align-items: center; /* Centrer les éléments */
+  margin-top: 20px;
+}
+
+.miniature-container {
+  display: flex; /* Afficher les miniatures en ligne */
+  justify-content: center; /* Centrer les miniatures */
+  margin-bottom: 10px; /* Espacement entre les miniatures et le bouton */
+}
+
+.miniature-card {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 60px; /* Largeur des miniatures */
+  height: 80px; /* Hauteur des miniatures */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px; /* Espacement entre les miniatures */
+}
+
+.return-button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: none; /* Masquer le bouton par défaut */
+}
+
+.return-button:hover {
+  background-color: #555; /* Couleur au survol */
+}
