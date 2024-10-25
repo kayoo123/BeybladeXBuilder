@@ -130,8 +130,8 @@ body {
 .miniature-card {
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 60px; /* Largeur des miniatures */
-  height: 80px; /* Hauteur des miniatures */
+  width: 120px; /* Largeur des miniatures */
+  height: 160px; /* Hauteur des miniatures */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -140,8 +140,8 @@ body {
 }
 
 .miniature-card img {
-  width: 25%; /* 25 % de la largeur de l'image originale */
-  height: auto; /* Hauteur proportionnelle */
+  width: 100%;
+  height: auto;
 }
 
 .return-button {
