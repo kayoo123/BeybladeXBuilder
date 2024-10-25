@@ -96,21 +96,22 @@ function returnToDeck() {
     // Réafficher tous les paquets de cartes
     cardWrappers.forEach(wrapper => {
         wrapper.classList.remove('hidden'); // Retirer la classe hidden de tous les paquets
+        wrapper.classList.remove('open'); // Réinitialiser l'état du paquet
     });
 
-    const activeWrapper = document.querySelector('.card-wrapper.open');
-    activeWrapper.classList.remove('open'); // Réinitialiser l'état du paquet
     currentCardIndex = 0; // Réinitialiser l'index pour une nouvelle session
     const cardElements = document.querySelectorAll('.card');
     cardElements.forEach(card => card.classList.remove('active')); // Masquer toutes les cartes
     miniaturesContainer.innerHTML = ''; // Réinitialiser le conteneur des miniatures
     returnButton.style.display = 'none'; // Masquer le bouton Retour
 
-    // Recharger 5 nouvelles cartes aléatoires
-    fetch('cards.json')
-        .then(response => response.json())
-        .then(data => {
-            loadRandomCards(data); // Recharger les cartes
-        })
-        .catch(error => console.error('Erreur lors du rechargement des cartes:', error));
+    // Recharger 5 nouvelles cartes aléatoires pour chaque paquet
+    cardWrappers.forEach(wrapper => {
+        fetch('cards.json')
+            .then(response => response.json())
+            .then(data => {
+                loadRandomCards(data); // Recharger les cartes pour chaque paquet
+            })
+            .catch(error => console.error('Erreur lors du rechargement des cartes:', error));
+    });
 }
