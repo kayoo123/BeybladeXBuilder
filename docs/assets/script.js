@@ -37,7 +37,14 @@ function displayCards() {
     cards.forEach(card => {
         const cardElement = document.createElement('div');
         cardElement.classList.add('card');
-        cardElement.textContent = card.name; // Afficher le nom de la carte
+        
+        // Créer une image pour la carte
+        const cardImage = document.createElement('img');
+        cardImage.src = `images/pokemon/${card.name}.webp`; // Assurez-vous que le chemin est correct
+        cardImage.alt = card.name; // Attribuer un texte alternatif
+
+        // Ajouter l'image au conteneur de la carte
+        cardElement.appendChild(cardImage);
         cardsContainer.appendChild(cardElement);
     });
 }
