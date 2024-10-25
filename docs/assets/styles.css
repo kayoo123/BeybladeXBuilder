@@ -6,8 +6,15 @@ body {
   background-attachment: fixed; /* Fixer l'image pour qu'elle reste en bas même au défilement */
   margin: 0; /* Supprimer les marges autour du body */
   min-height: 100vh; /* Assure que le body occupe toute la hauteur de la page */
-  position: absolute;
-  width: 100%;
+}
+
+.page-title {
+  color: #fff; /* Couleur blanche */
+  font-size: 3em; /* Taille du texte */
+  text-align: center; /* Centrer le texte horizontalement */
+  margin: 0; /* Supprimer les marges */
+  padding-top: 20vh; /* Espace en haut pour centrer verticalement */
+  font-family: Arial, sans-serif; /* Style de police pour un look clair et moderne */
 }
 
 .card-deck {
