@@ -1,16 +1,16 @@
-const cardWrapper = document.querySelector('.card-wrapper');
-const cardsContainer = document.querySelector('.card-back'); // Conteneur pour les cartes
+const cardWrappers = document.querySelectorAll('.card-wrapper'); // Sélectionner tous les paquets
 const miniaturesContainer = document.querySelector('.miniature-container');
 const returnButton = document.querySelector('.return-button');
 let currentCardIndex = 0;
-let cards = [];
+let allCards = []; // Pour stocker toutes les cartes
+let currentDeckIndex = 0; // Pour suivre quel paquet est ouvert
 
 // Charger les cartes depuis le fichier JSON
 fetch('cards.json')
     .then(response => response.json())
     .then(data => {
-        // Initialiser les cartes
-        loadRandomCards(data);
+        allCards = data; // Stocker toutes les cartes
+        loadRandomCards(); // Charger les cartes pour chaque paquet
     })
     .catch(error => console.error('Erreur lors du chargement des cartes:', error));
 
@@ -24,14 +24,17 @@ function getRandomCards(array, count) {
     return randomCards;
 }
 
-// Fonction pour charger des cartes aléatoires
-function loadRandomCards(data) {
-    cards = getRandomCards(data, 5);
-    displayCards();
+// Fonction pour charger des cartes aléatoires pour chaque paquet
+function loadRandomCards() {
+    cardWrappers.forEach((wrapper) => {
+        const cards = getRandomCards(allCards, 5);
+        displayCards(wrapper, cards);
+    });
 }
 
 // Fonction pour afficher les cartes dans le conteneur
-function displayCards() {
+function displayCards(wrapper, cards) {
+    const cardsContainer = wrapper.querySelector('.card-back');
     cardsContainer.innerHTML = ''; // Réinitialiser le conteneur des cartes
     cards.forEach(card => {
         const cardElement = document.createElement('div');
@@ -41,36 +44,40 @@ function displayCards() {
     });
 }
 
-// Écouteur d'événements pour le clic sur le paquet
-cardWrapper.addEventListener('click', () => {
-    if (!cardWrapper.classList.contains('open')) {
-        cardWrapper.classList.add('open');
-        revealNextCard();
-    } else {
-        revealNextCard();
-    }
+// Écouteur d'événements pour le clic sur chaque paquet
+cardWrappers.forEach((wrapper, index) => {
+    wrapper.addEventListener('click', () => {
+        currentDeckIndex = index; // Mettre à jour l'index du paquet courant
+        if (!wrapper.classList.contains('open')) {
+            wrapper.classList.add('open');
+            currentCardIndex = 0; // Réinitialiser l'index des cartes
+            revealNextCard(wrapper);
+        } else {
+            revealNextCard(wrapper);
+        }
+    });
 });
 
 // Fonction pour révéler la prochaine carte
-function revealNextCard() {
+function revealNextCard(wrapper) {
+    const cards = wrapper.querySelectorAll('.card');
     if (currentCardIndex < cards.length) {
-        const cardElements = document.querySelectorAll('.card');
-        cardElements[currentCardIndex].classList.add('active');
+        cards[currentCardIndex].classList.add('active');
         currentCardIndex++;
     } else {
-        showMiniatures();
+        showMiniatures(wrapper);
     }
 }
 
 // Fonction pour afficher les miniatures des cartes révélées
-function showMiniatures() {
-    cardWrapper.style.display = 'none';
-    miniaturesContainer.innerHTML = '';
+function showMiniatures(wrapper) {
+    const cards = wrapper.querySelectorAll('.card');
+    miniaturesContainer.innerHTML = ''; // Réinitialiser le conteneur des miniatures
 
-    cards.forEach((card, index) => {
+    cards.forEach((card) => {
         const miniature = document.createElement('div');
         miniature.classList.add('miniature-card');
-        miniature.textContent = card.name; // Afficher le nom de la carte
+        miniature.textContent = card.textContent; // Afficher le nom de la carte
         miniaturesContainer.appendChild(miniature);
     });
 
@@ -83,19 +90,16 @@ returnButton.addEventListener('click', returnToDeck);
 
 // Fonction pour retourner le paquet et repiocher des cartes
 function returnToDeck() {
-    cardWrapper.style.display = 'block'; // Réafficher le paquet
-    cardWrapper.classList.remove('open'); // Réinitialiser l'état du paquet
+    const currentWrapper = cardWrappers[currentDeckIndex]; // Obtenir le paquet courant
+    currentWrapper.style.display = 'block'; // Réafficher le paquet
+    currentWrapper.classList.remove('open'); // Réinitialiser l'état du paquet
     currentCardIndex = 0; // Réinitialiser l'index pour une nouvelle session
-    const cardElements = document.querySelectorAll('.card');
+    const cardElements = currentWrapper.querySelectorAll('.card');
     cardElements.forEach(card => card.classList.remove('active')); // Masquer toutes les cartes
     miniaturesContainer.innerHTML = ''; // Réinitialiser le conteneur des miniatures
     returnButton.style.display = 'none'; // Masquer le bouton Retour
 
-    // Recharger 5 nouvelles cartes aléatoires
-    fetch('cards.json')
-        .then(response => response.json())
-        .then(data => {
-            loadRandomCards(data); // Recharger les cartes
-        })
-        .catch(error => console.error('Erreur lors du rechargement des cartes:', error));
+    // Recharger 5 nouvelles cartes aléatoires pour le paquet courant
+    const cards = getRandomCards(allCards, 5);
+    displayCards(currentWrapper, cards); // Afficher les nouvelles cartes
 }
