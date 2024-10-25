@@ -137,6 +137,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0 5px; /* Espacement entre les miniatures */
+  border-radius: 10px; /* Arrondir les coins des miniatures */
   overflow: hidden; /* Pour cacher tout débordement */
 }
 
