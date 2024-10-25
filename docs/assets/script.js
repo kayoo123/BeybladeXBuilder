@@ -78,22 +78,12 @@ cardWrappers.forEach(wrapper => {
 function revealNextCard() {
     if (currentCardIndex < cards.length) {
         const cardElements = document.querySelectorAll('.card-wrapper.open .card');
-        const currentCard = cardElements[currentCardIndex];
-
-        // Afficher la carte avec animation
-        currentCard.classList.add('active');
-
-        // Ajouter une classe pour l'animation
-        setTimeout(() => {
-            currentCard.classList.remove('active'); // Enlever la classe pour permettre une nouvelle animation
-        }, 400); // Durée de l'animation, doit correspondre à la durée de la transition CSS
-
+        cardElements[currentCardIndex].classList.add('active');
         currentCardIndex++;
     } else {
         showMiniatures();
     }
 }
-
 
 // Fonction pour afficher les miniatures des cartes révélées
 function showMiniatures() {

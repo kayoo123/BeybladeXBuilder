@@ -81,19 +81,19 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 0.4s ease, transform 0.4s ease; /* Animation de fondu et translation */
+  transition: opacity 0.4s, transform 0.4s;
   position: absolute;
   width: 100%; /* Largeur de la carte */
   height: 100%; /* Hauteur de la carte */
   display: none;
-  padding: 0; /* Supprimer le padding */
-  margin: 0; /* Supprimer la marge */
+  padding: 0; /* Supprimer le padding pour éviter d'augmenter la taille */
+  margin: 0; /* Supprimer la marge pour éviter d'augmenter la taille */
 }
 
 .card.active {
   display: flex;
   opacity: 1;
-  transform: translateY(0); /* Remettre la carte à sa position originale */
+  transform: translateY(0);
   justify-content: center; /* Centrer le contenu de la carte */
   align-items: center; /* Centrer le contenu de la carte */
 }
