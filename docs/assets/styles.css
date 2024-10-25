@@ -17,6 +17,13 @@ body {
   font-family: Arial, sans-serif; /* Style de police pour un look clair et moderne */
 }
 
+.centered-image {
+  display: block; /* Permet à l'image d'être traitée comme un bloc */
+  margin: 20px auto; /* Centre l'image horizontalement avec une marge verticale */
+  max-width: 100%; /* Limite la largeur de l'image à 100% de son conteneur */
+  height: auto; /* Assure que la hauteur est proportionnelle */
+}
+
 .card-deck {
   display: flex;
   flex-direction: row;
