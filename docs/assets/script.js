@@ -56,6 +56,8 @@ cardWrappers.forEach(wrapper => {
             wrapper.classList.add('open');
             currentCardIndex = 0; // Réinitialiser l'index pour le nouveau paquet
             loadRandomCards(data); // Charger les cartes pour le paquet sélectionné
+            
+            // Révéler immédiatement la première carte
             revealNextCard(); // Révéler la première carte
         } else {
             revealNextCard(); // Révéler la prochaine carte
