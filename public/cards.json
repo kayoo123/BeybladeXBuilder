@@ -1,0 +1,12 @@
+[
+    { "name": "Carte A", "description": "Description de la carte A" },
+    { "name": "Carte B", "description": "Description de la carte B" },
+    { "name": "Carte C", "description": "Description de la carte C" },
+    { "name": "Carte D", "description": "Description de la carte D" },
+    { "name": "Carte E", "description": "Description de la carte E" },
+    { "name": "Carte F", "description": "Description de la carte F" },
+    { "name": "Carte G", "description": "Description de la carte G" },
+    { "name": "Carte H", "description": "Description de la carte H" },
+    { "name": "Carte I", "description": "Description de la carte I" },
+    { "name": "Carte J", "description": "Description de la carte J" }
+]
