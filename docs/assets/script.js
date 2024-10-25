@@ -78,12 +78,22 @@ cardWrappers.forEach(wrapper => {
 function revealNextCard() {
     if (currentCardIndex < cards.length) {
         const cardElements = document.querySelectorAll('.card-wrapper.open .card');
-        cardElements[currentCardIndex].classList.add('active');
+        const currentCard = cardElements[currentCardIndex];
+
+        // Assurez-vous que l'élément est affiché
+        currentCard.style.display = 'flex'; // Afficher la carte
+
+        // Ajouter la classe pour l'animation
+        setTimeout(() => {
+            currentCard.classList.add('active'); // Ajouter la classe d'animation après un court délai
+        }, 10); // Délai très court pour permettre à l'élément de s'afficher avant l'animation
+
         currentCardIndex++;
     } else {
         showMiniatures();
     }
 }
+
 
 // Fonction pour afficher les miniatures des cartes révélées
 function showMiniatures() {

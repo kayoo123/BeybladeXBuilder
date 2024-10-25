@@ -79,24 +79,25 @@ body {
 .card {
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.4s, transform 0.4s;
+  opacity: 0; /* La carte commence invisible */
+  transform: translateY(50px); /* La carte est légèrement décalée vers le bas */
+  transition: opacity 0.4s ease, transform 0.4s ease; /* Animation de fondu et translation */
   position: absolute;
   width: 100%; /* Largeur de la carte */
   height: 100%; /* Hauteur de la carte */
-  display: none;
-  padding: 0; /* Supprimer le padding pour éviter d'augmenter la taille */
-  margin: 0; /* Supprimer la marge pour éviter d'augmenter la taille */
+  display: none; /* Les cartes ne sont pas affichées par défaut */
+  padding: 0; /* Supprimer le padding */
+  margin: 0; /* Supprimer la marge */
 }
 
 .card.active {
-  display: flex;
-  opacity: 1;
-  transform: translateY(0);
+  display: flex; /* Afficher la carte */
+  opacity: 1; /* La carte devient visible */
+  transform: translateY(0); /* Remettre la carte à sa position originale */
   justify-content: center; /* Centrer le contenu de la carte */
   align-items: center; /* Centrer le contenu de la carte */
 }
+
 
 .card-wrapper.open {
   position: absolute;
