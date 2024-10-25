@@ -1,4 +1,4 @@
-const cardWrapper = document.querySelector('.card-wrapper');
+const cardWrappers = document.querySelectorAll('.card-wrapper'); // Sélectionner tous les paquets
 const cardsContainer = document.querySelector('.card-back'); // Conteneur pour les cartes
 const miniaturesContainer = document.querySelector('.miniature-container');
 const returnButton = document.querySelector('.return-button');
@@ -41,14 +41,23 @@ function displayCards() {
     });
 }
 
-// Écouteur d'événements pour le clic sur le paquet
-cardWrapper.addEventListener('click', () => {
-    if (!cardWrapper.classList.contains('open')) {
-        cardWrapper.classList.add('open');
-        revealNextCard();
-    } else {
-        revealNextCard();
-    }
+// Écouteur d'événements pour le clic sur chaque paquet
+cardWrappers.forEach(wrapper => {
+    wrapper.addEventListener('click', () => {
+        // Cacher les autres paquets
+        cardWrappers.forEach(w => {
+            if (w !== wrapper) {
+                w.classList.add('hidden');
+            }
+        });
+
+        if (!wrapper.classList.contains('open')) {
+            wrapper.classList.add('open');
+            revealNextCard();
+        } else {
+            revealNextCard();
+        }
+    });
 });
 
 // Fonction pour révéler la prochaine carte
@@ -64,7 +73,8 @@ function revealNextCard() {
 
 // Fonction pour afficher les miniatures des cartes révélées
 function showMiniatures() {
-    cardWrapper.style.display = 'none';
+    const activeWrapper = document.querySelector('.card-wrapper.open');
+    activeWrapper.style.display = 'none';
     miniaturesContainer.innerHTML = '';
 
     cards.forEach((card, index) => {
@@ -83,8 +93,9 @@ returnButton.addEventListener('click', returnToDeck);
 
 // Fonction pour retourner le paquet et repiocher des cartes
 function returnToDeck() {
-    cardWrapper.style.display = 'block'; // Réafficher le paquet
-    cardWrapper.classList.remove('open'); // Réinitialiser l'état du paquet
+    const activeWrapper = document.querySelector('.card-wrapper.open');
+    activeWrapper.style.display = 'block'; // Réafficher le paquet
+    activeWrapper.classList.remove('open'); // Réinitialiser l'état du paquet
     currentCardIndex = 0; // Réinitialiser l'index pour une nouvelle session
     const cardElements = document.querySelectorAll('.card');
     cardElements.forEach(card => card.classList.remove('active')); // Masquer toutes les cartes
@@ -98,4 +109,5 @@ function returnToDeck() {
             loadRandomCards(data); // Recharger les cartes
         })
         .catch(error => console.error('Erreur lors du rechargement des cartes:', error));
-}
+    }
+    
