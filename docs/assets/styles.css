@@ -108,3 +108,7 @@
 .return-button:hover {
   background-color: #555; /* Couleur au survol */
 }
+
+.hidden {
+  display: none;
+}

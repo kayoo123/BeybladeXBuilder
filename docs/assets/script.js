@@ -1,5 +1,4 @@
-const cardWrapper = document.querySelector('.card-wrapper');
-const cardsContainer = document.querySelector('.card-back'); // Conteneur pour les cartes
+const cardWrappers = document.querySelectorAll('.card-wrapper'); // Sélectionner tous les paquets
 const miniaturesContainer = document.querySelector('.miniature-container');
 const returnButton = document.querySelector('.return-button');
 let currentCardIndex = 0;
@@ -32,6 +31,7 @@ function loadRandomCards(data) {
 
 // Fonction pour afficher les cartes dans le conteneur
 function displayCards() {
+    const cardsContainer = document.querySelector('.card-back'); // Conteneur pour les cartes
     cardsContainer.innerHTML = ''; // Réinitialiser le conteneur des cartes
     cards.forEach(card => {
         const cardElement = document.createElement('div');
@@ -41,14 +41,26 @@ function displayCards() {
     });
 }
 
-// Écouteur d'événements pour le clic sur le paquet
-cardWrapper.addEventListener('click', () => {
-    if (!cardWrapper.classList.contains('open')) {
-        cardWrapper.classList.add('open');
-        revealNextCard();
-    } else {
-        revealNextCard();
-    }
+// Écouteur d'événements pour le clic sur chaque paquet
+cardWrappers.forEach(wrapper => {
+    wrapper.addEventListener('click', () => {
+        // Masquer les autres paquets
+        cardWrappers.forEach(otherWrapper => {
+            if (otherWrapper !== wrapper) {
+                otherWrapper.classList.add('hidden');
+            }
+        });
+
+        // Ouvrir le paquet sélectionné
+        if (!wrapper.classList.contains('open')) {
+            wrapper.classList.add('open');
+            currentCardIndex = 0; // Réinitialiser l'index pour le nouveau paquet
+            loadRandomCards(data); // Charger les cartes pour le paquet sélectionné
+            revealNextCard(); // Révéler la première carte
+        } else {
+            revealNextCard(); // Révéler la prochaine carte
+        }
+    });
 });
 
 // Fonction pour révéler la prochaine carte
@@ -64,6 +76,7 @@ function revealNextCard() {
 
 // Fonction pour afficher les miniatures des cartes révélées
 function showMiniatures() {
+    const cardWrapper = document.querySelector('.card-wrapper.open'); // Obtenir le paquet ouvert
     cardWrapper.style.display = 'none';
     miniaturesContainer.innerHTML = '';
 
@@ -83,6 +96,7 @@ returnButton.addEventListener('click', returnToDeck);
 
 // Fonction pour retourner le paquet et repiocher des cartes
 function returnToDeck() {
+    const cardWrapper = document.querySelector('.card-wrapper.open'); // Obtenir le paquet ouvert
     cardWrapper.style.display = 'block'; // Réafficher le paquet
     cardWrapper.classList.remove('open'); // Réinitialiser l'état du paquet
     currentCardIndex = 0; // Réinitialiser l'index pour une nouvelle session
