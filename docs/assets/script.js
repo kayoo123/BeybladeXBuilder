@@ -25,21 +25,22 @@ function getRandomCards(array, count) {
 }
 
 // Fonction pour charger des cartes aléatoires
-function loadRandomCards(data) {
+function loadRandomCards(data, container) {
     cards = getRandomCards(data, 5);
-    displayCards();
+    displayCards(container);
 }
 
-// Fonction pour afficher les cartes dans le conteneur
-function displayCards() {
-    cardsContainer.innerHTML = ''; // Réinitialiser le conteneur des cartes
+// Modifiez displayCards pour accepter un conteneur
+function displayCards(container) {
+    container.innerHTML = ''; // Réinitialiser le conteneur des cartes
     cards.forEach(card => {
         const cardElement = document.createElement('div');
         cardElement.classList.add('card');
         cardElement.textContent = card.name; // Afficher le nom de la carte
-        cardsContainer.appendChild(cardElement);
+        container.appendChild(cardElement);
     });
 }
+
 
 // Écouteur d'événements pour le clic sur chaque paquet
 cardWrappers.forEach(wrapper => {
@@ -107,10 +108,11 @@ function returnToDeck() {
 
     // Recharger 5 nouvelles cartes aléatoires pour chaque paquet
     cardWrappers.forEach(wrapper => {
+        const cardsContainer = wrapper.querySelector('.card-back'); // Sélectionner le conteneur de cartes pour ce paquet
         fetch('cards.json')
             .then(response => response.json())
             .then(data => {
-                loadRandomCards(data); // Recharger les cartes pour chaque paquet
+                loadRandomCards(data, cardsContainer); // Recharger les cartes pour chaque paquet
             })
             .catch(error => console.error('Erreur lors du rechargement des cartes:', error));
     });
