@@ -130,8 +130,8 @@ body {
 .miniature-card {
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 120px; /* Largeur des miniatures */
-  height: 160px; /* Hauteur des miniatures */
+  width: 184px; /* Largeur des miniatures */
+  height: 256px; /* Hauteur des miniatures */
   display: flex;
   justify-content: center;
   align-items: center;
