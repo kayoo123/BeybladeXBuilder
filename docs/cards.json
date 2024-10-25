@@ -1,12 +1,12 @@
 [
-    { "name": "Carte A", "description": "Description de la carte A" },
-    { "name": "Carte B", "description": "Description de la carte B" },
-    { "name": "Carte C", "description": "Description de la carte C" },
-    { "name": "Carte D", "description": "Description de la carte D" },
-    { "name": "Carte E", "description": "Description de la carte E" },
-    { "name": "Carte F", "description": "Description de la carte F" },
-    { "name": "Carte G", "description": "Description de la carte G" },
-    { "name": "Carte H", "description": "Description de la carte H" },
-    { "name": "Carte I", "description": "Description de la carte I" },
-    { "name": "Carte J", "description": "Description de la carte J" }
+    { "id": "1", "name": "Carte A", "pack": "1" },
+    { "id": "2", "name": "Carte B", "pack": "1" },
+    { "id": "3", "name": "Carte C", "pack": "1" },
+    { "id": "4", "name": "Carte D", "pack": "1" },
+    { "id": "5", "name": "Carte E", "pack": "1" },
+    { "id": "6", "name": "Carte F", "pack": "1" },
+    { "id": "7", "name": "Carte G", "pack": "2" },
+    { "id": "8", "name": "Carte H", "pack": "2" },
+    { "id": "9", "name": "Carte I", "pack": "3" },
+    { "id": "10", "name": "Carte J", "pack": "3" }
 ]

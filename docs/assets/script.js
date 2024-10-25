@@ -14,10 +14,14 @@ fetch('cards.json')
     })
     .catch(error => console.error('Erreur lors du chargement des cartes:', error));
 
-// Fonction pour obtenir un tableau de cartes aléatoires
+// Fonction pour obtenir un tableau de cartes aléatoires avec possibilité de duplication
 function getRandomCards(array, count) {
-    const shuffled = array.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
+    const randomCards = [];
+    for (let i = 0; i < count; i++) {
+        const randomIndex = Math.floor(Math.random() * array.length);
+        randomCards.push(array[randomIndex]);
+    }
+    return randomCards;
 }
 
 // Fonction pour charger des cartes aléatoires
