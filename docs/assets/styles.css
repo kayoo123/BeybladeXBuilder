@@ -13,7 +13,7 @@ body {
   font-size: 3em; /* Taille du texte */
   text-align: center; /* Centrer le texte horizontalement */
   margin: 0; /* Supprimer les marges */
-  padding-top: 20vh; /* Espace en haut pour centrer verticalement */
+ /* padding-top: 20vh; */
   font-family: Arial, sans-serif; /* Style de police pour un look clair et moderne */
 }
 
