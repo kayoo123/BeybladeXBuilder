@@ -3,13 +3,13 @@ const miniaturesContainer = document.querySelector('.miniature-container');
 const returnButton = document.querySelector('.return-button');
 let currentCardIndex = 0;
 let cards = [];
+let cardData = []; // Variable pour stocker les données des cartes
 
 // Charger les cartes depuis le fichier JSON
 fetch('cards.json')
     .then(response => response.json())
     .then(data => {
-        // Initialiser les cartes
-        loadRandomCards(data);
+        cardData = data; // Stocker les données dans une variable globale
     })
     .catch(error => console.error('Erreur lors du chargement des cartes:', error));
 
@@ -23,15 +23,16 @@ function getRandomCards(array, count) {
     return randomCards;
 }
 
-// Fonction pour charger des cartes aléatoires
-function loadRandomCards(data) {
-    cards = getRandomCards(data, 5);
+// Fonction pour charger des cartes aléatoires en fonction du pack
+function loadRandomCards(packNumber) {
+    const filteredCards = cardData.filter(card => card.pack === packNumber); // Filtrer par pack
+    cards = getRandomCards(filteredCards, 5); // Tirer 5 cartes aléatoires
     displayCards();
 }
 
 // Fonction pour afficher les cartes dans le conteneur
 function displayCards() {
-    const cardsContainer = document.querySelector('.card-back'); // Conteneur pour les cartes
+    const cardsContainer = document.querySelector('.card-wrapper.open .card-back'); // Conteneur pour les cartes
     cardsContainer.innerHTML = ''; // Réinitialiser le conteneur des cartes
     cards.forEach(card => {
         const cardElement = document.createElement('div');
@@ -55,7 +56,8 @@ cardWrappers.forEach(wrapper => {
         if (!wrapper.classList.contains('open')) {
             wrapper.classList.add('open');
             currentCardIndex = 0; // Réinitialiser l'index pour le nouveau paquet
-            loadRandomCards(data); // Charger les cartes pour le paquet sélectionné
+            const packNumber = wrapper.getAttribute('data-pack'); // Obtenir le numéro de pack
+            loadRandomCards(packNumber); // Charger les cartes pour le pack sélectionné
             
             // Révéler immédiatement la première carte
             revealNextCard(); // Révéler la première carte
@@ -68,7 +70,7 @@ cardWrappers.forEach(wrapper => {
 // Fonction pour révéler la prochaine carte
 function revealNextCard() {
     if (currentCardIndex < cards.length) {
-        const cardElements = document.querySelectorAll('.card');
+        const cardElements = document.querySelectorAll('.card-wrapper.open .card');
         cardElements[currentCardIndex].classList.add('active');
         currentCardIndex++;
     } else {
@@ -82,7 +84,7 @@ function showMiniatures() {
     cardWrapper.style.display = 'none';
     miniaturesContainer.innerHTML = '';
 
-    cards.forEach((card, index) => {
+    cards.forEach((card) => {
         const miniature = document.createElement('div');
         miniature.classList.add('miniature-card');
         miniature.textContent = card.name; // Afficher le nom de la carte
@@ -96,7 +98,7 @@ function showMiniatures() {
 // Écouteur d'événements pour le bouton Retour
 returnButton.addEventListener('click', returnToDeck);
 
-// Fonction pour retourner le paquet et repiocher des cartes
+// Fonction pour retourner au paquet et repiocher des cartes
 function returnToDeck() {
     const cardWrapper = document.querySelector('.card-wrapper.open'); // Obtenir le paquet ouvert
     cardWrapper.style.display = 'block'; // Réafficher le paquet
