@@ -107,12 +107,8 @@ function returnToDeck() {
     miniaturesContainer.innerHTML = ''; // Réinitialiser le conteneur des miniatures
     returnButton.style.display = 'none'; // Masquer le bouton Retour
 
-    // Recharger 5 nouvelles cartes aléatoires
-    fetch('cards.json')
-        .then(response => response.json())
-        .then(data => {
-            loadRandomCards(data); // Recharger les cartes
-            revealNextCard(); // Afficher directement la première carte
-        })
-        .catch(error => console.error('Erreur lors du rechargement des cartes:', error));
+    // Réafficher tous les paquets
+    cardWrappers.forEach(wrapper => {
+        wrapper.classList.remove('hidden'); // Afficher tous les paquets
+    });
 }
