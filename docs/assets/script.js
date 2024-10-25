@@ -103,6 +103,8 @@ function returnToDeck() {
     const cardWrapper = document.querySelector('.card-wrapper.open'); // Obtenir le paquet ouvert
     cardWrapper.style.display = 'block'; // Réafficher le paquet
     cardWrapper.classList.remove('open'); // Réinitialiser l'état du paquet
+    cardWrapper.style.transform = ''; // Réinitialiser la position
+
     currentCardIndex = 0; // Réinitialiser l'index pour une nouvelle session
     const cardElements = document.querySelectorAll('.card');
     cardElements.forEach(card => card.classList.remove('active')); // Masquer toutes les cartes

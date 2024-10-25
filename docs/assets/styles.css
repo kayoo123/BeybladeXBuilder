@@ -63,6 +63,14 @@
   align-items: center; /* Centrer le contenu de la carte */
 }
 
+.card-wrapper.open {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10; /* Assure que le paquet ouvert soit au-dessus des autres éléments */
+}
+
 .card-wrapper.open .card-front {
   transform: rotateY(180deg);
 }
