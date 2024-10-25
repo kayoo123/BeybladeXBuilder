@@ -93,8 +93,12 @@ returnButton.addEventListener('click', returnToDeck);
 
 // Fonction pour retourner le paquet et repiocher des cartes
 function returnToDeck() {
+    // Réafficher tous les paquets de cartes
+    cardWrappers.forEach(wrapper => {
+        wrapper.classList.remove('hidden'); // Retirer la classe hidden de tous les paquets
+    });
+
     const activeWrapper = document.querySelector('.card-wrapper.open');
-    activeWrapper.style.display = 'block'; // Réafficher le paquet
     activeWrapper.classList.remove('open'); // Réinitialiser l'état du paquet
     currentCardIndex = 0; // Réinitialiser l'index pour une nouvelle session
     const cardElements = document.querySelectorAll('.card');
@@ -109,5 +113,4 @@ function returnToDeck() {
             loadRandomCards(data); // Recharger les cartes
         })
         .catch(error => console.error('Erreur lors du rechargement des cartes:', error));
-    }
-    
+}
