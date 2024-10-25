@@ -1,16 +1,16 @@
 .card-deck {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  display: flex; /* Afficher les paquets en ligne */
+  justify-content: center; /* Centrer les paquets horizontalement */
+  align-items: center; /* Centrer les paquets verticalement */
+  gap: 20px; /* Espacement entre les paquets */
+  margin: 20px; /* Marge autour du conteneur principal */
 }
 
 .card-wrapper {
-  position: relative;
+  /* Ajoutez d'autres styles si nécessaire */
   width: 300px; /* Largeur du paquet */
   height: 400px; /* Hauteur du paquet */
-  perspective: 1000px;
-  cursor: pointer;
+  perspective: 1000px; /* Pour l'effet de perspective */
 }
 
 .card-front,
