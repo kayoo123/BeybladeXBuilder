@@ -94,13 +94,21 @@ function showMiniatures() {
     cards.forEach((card) => {
         const miniature = document.createElement('div');
         miniature.classList.add('miniature-card');
-        miniature.textContent = card.name; // Afficher le nom de la carte
+
+        // Créer une image pour la miniature
+        const miniatureImage = document.createElement('img');
+        miniatureImage.src = `images/pokemon/${card.name}.webp`; // Assurez-vous que le chemin est correct
+        miniatureImage.alt = card.name; // Attribuer un texte alternatif
+
+        // Ajouter l'image à la miniature
+        miniature.appendChild(miniatureImage);
         miniaturesContainer.appendChild(miniature);
     });
 
     returnButton.style.display = 'block';
     miniaturesContainer.parentElement.style.display = 'flex';
 }
+
 
 // Écouteur d'événements pour le bouton Retour
 returnButton.addEventListener('click', returnToDeck);

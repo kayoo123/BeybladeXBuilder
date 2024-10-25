@@ -136,6 +136,12 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0 5px; /* Espacement entre les miniatures */
+  overflow: hidden; /* Pour cacher tout débordement */
+}
+
+.miniature-card img {
+  width: 25%; /* 25 % de la largeur de l'image originale */
+  height: auto; /* Hauteur proportionnelle */
 }
 
 .return-button {
@@ -156,3 +162,4 @@ body {
   visibility: hidden; /* Cache le deck sans changer l'espace */
   pointer-events: none;
 }
+
