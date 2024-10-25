@@ -1,16 +1,15 @@
 .card-deck {
-  display: flex; /* Afficher les paquets en ligne */
-  justify-content: center; /* Centrer les paquets horizontalement */
-  align-items: center; /* Centrer les paquets verticalement */
-  gap: 20px; /* Espacement entre les paquets */
-  margin: 20px; /* Marge autour du conteneur principal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 20px;
 }
 
 .card-wrapper {
-  /* Ajoutez d'autres styles si nécessaire */
-  width: 300px; /* Largeur du paquet */
-  height: 400px; /* Hauteur du paquet */
-  perspective: 1000px; /* Pour l'effet de perspective */
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
 }
 
 .card-front,
@@ -36,10 +35,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0; /* Supprimer le padding pour éviter d'augmenter la taille */
-  margin: 0; /* Supprimer la marge pour éviter d'augmenter la taille */
-  width: 100%; /* Assurez-vous que la carte arrière prend toute la largeur */
-  height: 100%; /* Assurez-vous que la carte arrière prend toute la hauteur */
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .card {
@@ -109,8 +108,3 @@
 .return-button:hover {
   background-color: #555; /* Couleur au survol */
 }
-
-.hidden {
-  display: none;
-}
-
