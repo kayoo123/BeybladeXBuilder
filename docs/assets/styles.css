@@ -38,7 +38,7 @@ body {
   width: 367px;
   height: 512px;
   perspective: 1000px;
-  background-color: rgba(255, 255, 255, 0.8); /* Fond blanc transparent */
+  background-color: rgb(255, 255, 255); /* Fond blanc transparent */
   border-radius: 15px; /* Coins arrondis */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.2); /* Effet d'ombre pour un look 3D */
   overflow: hidden; /* Assure que le contenu respecte les coins arrondis */
@@ -55,7 +55,7 @@ body {
 }
 
 .card-front {
-  background-color: rgba(255, 255, 255, 0.8); /* Fond blanc transparent */
+  background-color: rgb(255, 255, 255); /* Fond blanc transparent */
   color: #fff;
   display: flex;
   justify-content: center;
