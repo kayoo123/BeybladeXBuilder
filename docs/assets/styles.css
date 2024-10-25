@@ -4,7 +4,7 @@ body {
   background-position: center bottom; /* Positionner l'image en bas et au centre */
   background-repeat: no-repeat; /* Empêcher la répétition de l'image */
   background-attachment: fixed; /* Fixer l'image pour qu'elle reste en bas même au défilement */
-  background-size: cover; /* Étendre l'image pour couvrir tout le fond */
+  background-size: contain; /* Étendre l'image pour couvrir tout le fond */
   margin: 0; /* Supprimer les marges autour du body */
   min-height: 100vh; /* Assure que le body occupe toute la hauteur de la page */
 }
