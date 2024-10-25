@@ -9,9 +9,8 @@ let cards = [];
 fetch('cards.json')
     .then(response => response.json())
     .then(data => {
-        // Sélectionner aléatoirement 5 cartes
-        cards = getRandomCards(data, 5);
-        displayCards();
+        // Initialiser les cartes
+        loadRandomCards(data);
     })
     .catch(error => console.error('Erreur lors du chargement des cartes:', error));
 
@@ -21,8 +20,15 @@ function getRandomCards(array, count) {
     return shuffled.slice(0, count);
 }
 
+// Fonction pour charger des cartes aléatoires
+function loadRandomCards(data) {
+    cards = getRandomCards(data, 5);
+    displayCards();
+}
+
 // Fonction pour afficher les cartes dans le conteneur
 function displayCards() {
+    cardsContainer.innerHTML = ''; // Réinitialiser le conteneur des cartes
     cards.forEach(card => {
         const cardElement = document.createElement('div');
         cardElement.classList.add('card');
@@ -71,13 +77,21 @@ function showMiniatures() {
 // Écouteur d'événements pour le bouton Retour
 returnButton.addEventListener('click', returnToDeck);
 
-// Fonction pour retourner le paquet
+// Fonction pour retourner le paquet et repiocher des cartes
 function returnToDeck() {
-    cardWrapper.style.display = 'block';
-    cardWrapper.classList.remove('open');
-    currentCardIndex = 0;
+    cardWrapper.style.display = 'block'; // Réafficher le paquet
+    cardWrapper.classList.remove('open'); // Réinitialiser l'état du paquet
+    currentCardIndex = 0; // Réinitialiser l'index pour une nouvelle session
     const cardElements = document.querySelectorAll('.card');
-    cardElements.forEach(card => card.classList.remove('active'));
-    miniaturesContainer.innerHTML = '';
-    returnButton.style.display = 'none';
+    cardElements.forEach(card => card.classList.remove('active')); // Masquer toutes les cartes
+    miniaturesContainer.innerHTML = ''; // Réinitialiser le conteneur des miniatures
+    returnButton.style.display = 'none'; // Masquer le bouton Retour
+
+    // Recharger 5 nouvelles cartes aléatoires
+    fetch('cards.json')
+        .then(response => response.json())
+        .then(data => {
+            loadRandomCards(data); // Recharger les cartes
+        })
+        .catch(error => console.error('Erreur lors du rechargement des cartes:', error));
 }
