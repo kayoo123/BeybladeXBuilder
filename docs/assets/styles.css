@@ -1,6 +1,6 @@
 body {
   background-color: #2649ad; /* Couleur de fond de la page */
-  background-image: url('images/logo/tcg-cards-bg-graphic.png'); /* Image de fond */
+  background-image: url('/images/logo/tcg-cards-bg-graphic.png'); /* Image de fond */
   background-position: center bottom; /* Positionner l'image en bas et au centre */
   background-repeat: no-repeat; /* Empêcher la répétition de l'image */
   background-attachment: fixed; /* Fixer l'image pour qu'elle reste en bas même au défilement */
@@ -38,7 +38,7 @@ body {
 }
 
 .card-front {
-  background-color: #333;
+  background-color: #fff;
   color: #fff;
   display: flex;
   justify-content: center;
