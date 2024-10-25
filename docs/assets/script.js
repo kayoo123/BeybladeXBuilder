@@ -110,6 +110,7 @@ function returnToDeck() {
         .then(response => response.json())
         .then(data => {
             loadRandomCards(data); // Recharger les cartes
+            revealNextCard(); // Afficher directement la première carte
         })
         .catch(error => console.error('Erreur lors du rechargement des cartes:', error));
 }
