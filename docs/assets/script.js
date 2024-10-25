@@ -23,20 +23,12 @@ function getRandomCards(array, count) {
     return randomCards;
 }
 
-// Fonction pour charger des cartes aléatoires en fonction du pack sélectionné
+// Fonction pour charger des cartes aléatoires en fonction du pack
 function loadRandomCards(packNumber) {
-    // Filtrer les cartes du pack sélectionné
-    fetch('cards.json')
-        .then(response => response.json())
-        .then(data => {
-            const filteredCards = data.filter(card => card.pack === packNumber);
-            // Obtenir 5 cartes aléatoires du pack filtré
-            cards = getRandomCards(filteredCards, 5);
-            displayCards();
-        })
-        .catch(error => console.error('Erreur lors du chargement des cartes:', error));
+    const filteredCards = cardData.filter(card => card.pack === packNumber); // Filtrer par pack
+    cards = getRandomCards(filteredCards, 5); // Tirer 5 cartes aléatoires
+    displayCards();
 }
-
 
 // Fonction pour afficher les cartes dans le conteneur
 function displayCards() {
@@ -108,17 +100,17 @@ returnButton.addEventListener('click', returnToDeck);
 
 // Fonction pour retourner au paquet et repiocher des cartes
 function returnToDeck() {
-    const cardWrapper = document.querySelector('.card-wrapper.open');
-    cardWrapper.classList.remove('centered'); // Retirer la classe centrée
-    cardWrapper.classList.remove('open');
-    currentCardIndex = 0;
-
-    // Réinitialiser les éléments de cartes et les miniatures
+    const cardWrapper = document.querySelector('.card-wrapper.open'); // Obtenir le paquet ouvert
+    cardWrapper.style.display = 'block'; // Réafficher le paquet
+    cardWrapper.classList.remove('open'); // Réinitialiser l'état du paquet
+    currentCardIndex = 0; // Réinitialiser l'index pour une nouvelle session
     const cardElements = document.querySelectorAll('.card');
-    cardElements.forEach(card => card.classList.remove('active'));
-    miniaturesContainer.innerHTML = '';
-    returnButton.style.display = 'none';
+    cardElements.forEach(card => card.classList.remove('active')); // Masquer toutes les cartes
+    miniaturesContainer.innerHTML = ''; // Réinitialiser le conteneur des miniatures
+    returnButton.style.display = 'none'; // Masquer le bouton Retour
 
-    // Réafficher tous les decks
-    cardWrappers.forEach(wrapper => wrapper.classList.remove('hidden'));
+    // Réafficher tous les paquets
+    cardWrappers.forEach(wrapper => {
+        wrapper.classList.remove('hidden'); // Afficher tous les paquets
+    });
 }
