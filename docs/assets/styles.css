@@ -1,5 +1,3 @@
-
-
 body {
   background-color: black;
   background-image: url('https://beyblade.com/assets/images/main-banner.webp');
@@ -12,6 +10,8 @@ body {
 .topnav {
   background-color: black;
   overflow: hidden;
+  float: right; 
+  margin-top: 20px; 
 }
 
 /* Style the links inside the navigation bar */
