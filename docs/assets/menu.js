@@ -3,9 +3,8 @@ document.write('\
 <div id="mySidepanel" class="sidepanel">\
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>\
     <a href="/BeybladeXBuilder/news.html">News</a>\
-    <a href="#">Services</a>\
-    <a href="#">Clients</a>\
-    <a href="#">Contact</a>\
+    <a href="/BeybladeXBuilder/builder.html">Builder</a>\
+    <a href="/BeybladeXBuilder/contact.html">Contact</a>\
   </div>\
   \
   <table style="width: 100%;">\
