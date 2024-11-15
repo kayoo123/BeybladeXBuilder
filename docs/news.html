@@ -9,29 +9,37 @@
     <title>Beyblade X Builder</title>
 </head>
 <body>
-<a href="/BeybladeXBuilder/" title="Index"><img src="https://beyblade.com/assets/images/company-logo-3.webp" alt="company-logo-3"></img></a>
-<div class="topnav" id="myTopnav">
-  <a></a>
-  <a href="/BeybladeXBuilder/news.html" class="active">News</a>
-  <a href="#build">Builder</a>
-  <a href="#about">About</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
-</div>
-<div class="container">
-    <div class="news-card">
+    <div id="mySidepanel" class="sidepanel">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div>
+      
+      <table style="width: 100%;">
+          <tr>
+              <td style="text-align: left;">
+                  <a href="/BeybladeXBuilder/" title="Index"><img src="https://beyblade.com/assets/images/company-logo-3.webp" alt="company-logo-3"></img></a>
+              </td>
+              <td style="text-align: right;">
+                  <button class="openbtn" onclick="openNav()">☰</button>
+              </td>
+          </tr>
+      </table>
+    <div class="container">
+      <div class="news-card">
         <h2>Titre de l'actualité 1</h2>
         <p>Contenu de l'actualité 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-    <div class="news-card">
+      </div>
+      <div class="news-card">
         <h2>Titre de l'actualité 2</h2>
         <p>Contenu de l'actualité 2. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-    <div class="news-card">
+      </div>
+      <div class="news-card">
         <h2>Titre de l'actualité 3</h2>
         <p>Contenu de l'actualité 3. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-    </div>
+      </div>
 </div>
 <script src="assets/scripts.js"></script>
 <script defer data-project="672768fe3c3ecce49596df30" src="https://cdn.jsdelivr.net/gh/litlyx/litlyx-js/browser/litlyx.js"></script>
