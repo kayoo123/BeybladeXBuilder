@@ -1,0 +1,24 @@
+{
+    "blades": [
+        {
+            "id" : "BX-01",
+            "name": "Sword Dran",
+            "attaque": 55,
+            "defense": 25,
+            "endurance": 20,
+            "poids" : "34,5"
+        },
+        {
+            "name": "Élément 2",
+            "attaque": 7,
+            "defense": 10,
+            "endurance": 6
+        },
+        {
+            "name": "Élément 3",
+            "attaque": 5,
+            "defense": 7,
+            "endurance": 10
+        }
+    ]
+}
