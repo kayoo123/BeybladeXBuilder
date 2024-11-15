@@ -1,3 +1,7 @@
+$(function(){
+  $("#includedMenu").load("menu.html"); 
+});
+
 function openNav() {
   document.getElementById("mySidepanel").style.width = "250px";
 }
