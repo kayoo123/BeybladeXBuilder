@@ -67,6 +67,12 @@ body {
 }
 
 
+.empty {
+  max-width: 800px; /* Largeur maximale du conteneur */
+  margin: 50px auto; /* Centre le conteneur horizontalement et ajoute un espace en haut */
+  padding: 20px; /* Ajoute un peu d'espace à l'intérieur du conteneur */
+}
+
 .container {
   max-width: 800px; /* Largeur maximale du conteneur */
   margin: 50px auto; /* Centre le conteneur horizontalement et ajoute un espace en haut */
